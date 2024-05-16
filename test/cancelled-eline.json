@@ -1,0 +1,275 @@
+{
+    "id": "25434",
+    "name": "Union Station Track 12",
+    "lat": 39.755125,
+    "lng": -105.003351,
+    "childStops": [],
+    "parentStationName": "Union Station",
+    "parentStationId": "33727",
+    "branches": [
+        {
+            "id": "E",
+            "routeColor": "#552683",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to RidgeGate Parkway Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "RidgeGate",
+            "directionId": 1,
+            "directionName": "Southbound",
+            "stopName": "Union Station Track 12",
+            "stopId": "25434",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715830470000,
+                    "scheduledDepartureTime": 1715830470000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "115032775",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715830470000,
+                    "scheduledDepartureTime": 1715830470000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798554",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715832300000,
+                    "scheduledDepartureTime": 1715832300000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "115032776",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715832300000,
+                    "scheduledDepartureTime": 1715832300000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798555",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715834100000,
+                    "scheduledDepartureTime": 1715834100000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798557",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715834100000,
+                    "scheduledDepartureTime": 1715834100000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "115032777",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        },
+        {
+            "id": "W",
+            "routeColor": "#009DAA",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to Jefferson County Government Center-Golden Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "Federal Ctr",
+            "directionId": 1,
+            "directionName": "Westbound",
+            "stopName": "Union Station Track 12",
+            "stopId": "25434",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": 1715830650000,
+                    "predictedDepartureTime": 1715830650000,
+                    "scheduledArrivalTime": 1715830650000,
+                    "scheduledDepartureTime": 1715830650000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798796",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715857650000,
+                    "scheduledDepartureTime": 1715857650000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798857",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715859450000,
+                    "scheduledDepartureTime": 1715859450000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798866",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715861250000,
+                    "scheduledDepartureTime": 1715861250000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798856",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715863050000,
+                    "scheduledDepartureTime": 1715863050000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798859",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715864850000,
+                    "scheduledDepartureTime": 1715864850000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798797",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        },
+        {
+            "id": "W",
+            "routeColor": "#009DAA",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to Jefferson County Government Center-Golden Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "Jeffco",
+            "directionId": 1,
+            "directionName": "Westbound",
+            "stopName": "Union Station Track 12",
+            "stopId": "25434",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": 1715829750000,
+                    "predictedDepartureTime": 1715829750000,
+                    "scheduledArrivalTime": 1715829750000,
+                    "scheduledDepartureTime": 1715829750000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798801",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED",
+                    "vehicle": {
+                        "bearing": 212.4,
+                        "id": "1878551BCF20CD6FE063DC4D1FACDBC6",
+                        "label": "71",
+                        "lat": 39.7558945683,
+                        "lng": -105.002704995,
+                        "timestamp": 1715829169000,
+                        "routeTextColor": "#FFFFFF",
+                        "routeColor": "#009DAA",
+                        "mode": "RAIL"
+                    }
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715831610000,
+                    "scheduledDepartureTime": 1715831610000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798800",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715833410000,
+                    "scheduledDepartureTime": 1715833410000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798799",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715835210000,
+                    "scheduledDepartureTime": 1715835210000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798865",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715837055000,
+                    "scheduledDepartureTime": 1715837055000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798795",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715838855000,
+                    "scheduledDepartureTime": 1715838855000,
+                    "stopDropOffType": 1,
+                    "stopPickupType": 0,
+                    "tripId": "114798794",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        }
+    ],
+    "directions": [
+        "Southbound",
+        "Westbound"
+    ]
+}

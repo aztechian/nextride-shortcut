@@ -1,0 +1,203 @@
+{
+    "id": "34575",
+    "name": "Iliff Station",
+    "lat": 39.672974,
+    "lng": -104.827232,
+    "childStops": [],
+    "parentStationName": "Iliff Station",
+    "parentStationId": "34677",
+    "branches": [
+        {
+            "id": "H",
+            "routeColor": "#0075BE",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "18th & California Station to Florida Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "18th & California",
+            "directionId": 0,
+            "directionName": "Northbound",
+            "stopName": "Iliff Station",
+            "stopId": "34575",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715832630000,
+                    "scheduledDepartureTime": 1715832630000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115032217",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715832630000,
+                    "scheduledDepartureTime": 1715832630000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798298",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715834430000,
+                    "scheduledDepartureTime": 1715834430000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798438",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715834430000,
+                    "scheduledDepartureTime": 1715834430000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115032356",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715836230000,
+                    "scheduledDepartureTime": 1715836230000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798434",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715836230000,
+                    "scheduledDepartureTime": 1715836230000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115032352",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        },
+        {
+            "id": "R",
+            "routeColor": "#C4D600",
+            "routeTextColor": "#000000",
+            "routeLongName": "Lincoln Station to Peoria Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "R Line Lincoln Station",
+            "directionId": 1,
+            "directionName": "Southbound",
+            "stopName": "Iliff Station",
+            "stopId": "34575",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": 1715831712000,
+                    "predictedDepartureTime": 1715831734000,
+                    "scheduledArrivalTime": 1715831550000,
+                    "scheduledDepartureTime": 1715831550000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798927",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED",
+                    "vehicle": {
+                        "bearing": 180,
+                        "id": "187995E194CACD5AE063DC4D1FAC1AC1",
+                        "label": "25",
+                        "lat": 39.6905807439,
+                        "lng": -104.828542812,
+                        "timestamp": 1715831392000,
+                        "routeTextColor": "#000000",
+                        "routeColor": "#C4D600",
+                        "mode": "RAIL"
+                    }
+                },
+                {
+                    "predictedArrivalTime": 1715833236000,
+                    "predictedDepartureTime": 1715833258000,
+                    "scheduledArrivalTime": 1715833350000,
+                    "scheduledDepartureTime": 1715833350000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798930",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED",
+                    "vehicle": {
+                        "bearing": 95,
+                        "id": "18784FC3CC31FAAEE063DD4D1FAC23D6",
+                        "label": "21",
+                        "lat": 39.7674013829,
+                        "lng": -104.851193749,
+                        "timestamp": 1715830853000,
+                        "routeTextColor": "#000000",
+                        "routeColor": "#C4D600",
+                        "mode": "RAIL"
+                    }
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715835150000,
+                    "scheduledDepartureTime": 1715835150000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798926",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715856750000,
+                    "scheduledDepartureTime": 1715856750000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798949",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715858550000,
+                    "scheduledDepartureTime": 1715858550000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798950",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715860350000,
+                    "scheduledDepartureTime": 1715860350000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798925",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        }
+    ],
+    "directions": [
+        "Northbound",
+        "Southbound"
+    ]
+}

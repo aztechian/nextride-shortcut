@@ -1,0 +1,263 @@
+{
+    "id": "25980",
+    "name": "Colorado Station",
+    "lat": 39.679672,
+    "lng": -104.937714,
+    "childStops": [],
+    "parentStationName": "Colorado Station",
+    "parentStationId": "33708",
+    "branches": [
+        {
+            "id": "E",
+            "routeColor": "#552683",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to RidgeGate Parkway Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "Lincoln",
+            "directionId": 1,
+            "directionName": "Southbound",
+            "stopName": "Colorado Station",
+            "stopId": "25980",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715851425000,
+                    "scheduledDepartureTime": 1715851425000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798707",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715853225000,
+                    "scheduledDepartureTime": 1715853225000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798706",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715855025000,
+                    "scheduledDepartureTime": 1715855025000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798705",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715937825000,
+                    "scheduledDepartureTime": 1715937825000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114799557",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715939625000,
+                    "scheduledDepartureTime": 1715939625000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114799556",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715941425000,
+                    "scheduledDepartureTime": 1715941425000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114799555",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        },
+        {
+            "id": "E",
+            "routeColor": "#552683",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to RidgeGate Parkway Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "RidgeGate",
+            "directionId": 1,
+            "directionName": "Southbound",
+            "stopName": "Colorado Station",
+            "stopId": "25980",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715835765000,
+                    "scheduledDepartureTime": 1715835765000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798557",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715837505000,
+                    "scheduledDepartureTime": 1715837505000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798630",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715839305000,
+                    "scheduledDepartureTime": 1715839305000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798639",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715854845000,
+                    "scheduledDepartureTime": 1715854845000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798718",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715856705000,
+                    "scheduledDepartureTime": 1715856705000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798697",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715857605000,
+                    "scheduledDepartureTime": 1715857605000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798698",
+                    "tripStatus": "BUS SHUTTLE",
+                    "tripStopStatus": "BUS SHUTTLE"
+                }
+            ]
+        },
+        {
+            "id": "H",
+            "routeColor": "#0075BE",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "18th & California Station to Florida Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "Florida",
+            "directionId": 1,
+            "directionName": "Southbound",
+            "stopName": "Colorado Station",
+            "stopId": "25980",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715835255000,
+                    "scheduledDepartureTime": 1715835255000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798592",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715837055000,
+                    "scheduledDepartureTime": 1715837055000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798593",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715838915000,
+                    "scheduledDepartureTime": 1715838915000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798631",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715853540000,
+                    "scheduledDepartureTime": 1715853540000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798700",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715855490000,
+                    "scheduledDepartureTime": 1715855490000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798701",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1715856885000,
+                    "scheduledDepartureTime": 1715856885000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "114798716",
+                    "tripStatus": "CANCELLED",
+                    "tripStopStatus": "CANCELLED"
+                }
+            ]
+        }
+    ],
+    "directions": [
+        "Southbound"
+    ]
+}

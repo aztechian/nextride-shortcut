@@ -57,6 +57,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, fmt.Sprintf("Failed to get upcoming trip: %v", err), http.StatusInternalServerError)
 			return
 		}
+		if trip == nil {
+			http.Error(w, fmt.Sprintf("No upcoming %s line trips found, check the RTD app", railLine), http.StatusNotFound)
+			return
+		}
 		fmt.Fprintf(w, "The Next %s Line arrives in %s", railLine, trip.GetTime())
 	default:
 		http.Error(w, fmt.Sprintf("%s is not a valid rail line", railLine), http.StatusBadRequest)

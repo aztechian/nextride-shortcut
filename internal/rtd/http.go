@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/http/httputil"
 	"time"
 )
 
@@ -61,15 +62,18 @@ func parseStation(body io.ReadCloser) (*Station, error) {
 }
 
 func (r Rtd) DoRequest(req *http.Request) (*http.Response, error) {
-	setHeaders(req)
+	fmt.Printf("Sending request for %s\n", req.URL.String())
+	reqDump, _ := httputil.DumpRequest(req, true)
+	fmt.Println(string(reqDump))
 	resp, err := r.Client.Do(req)
 	if err != nil {
+		fmt.Printf("Error sending request: %s\n", err.Error())
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (r Rtd) Get() (*UpcomingTrip, error) {
+func (r Rtd) Get() (*Trip, error) {
 	req, err := NewRequest(r.Line, r.Stop)
 	if err != nil {
 		return nil, err
@@ -80,11 +84,15 @@ func (r Rtd) Get() (*UpcomingTrip, error) {
 		return nil, err
 	}
 
+	respDump, _ := httputil.DumpResponse(resp, true)
+	fmt.Println(string(respDump))
 	body := resp.Body
 	station, err := parseStation(body)
 	if err != nil {
+		fmt.Printf("Error parsing response body: %s\n", err.Error())
 		return nil, err
 	}
+	fmt.Printf("Received response with status code %d, length: %d\n", resp.StatusCode, resp.ContentLength)
 
 	trip := station.GetUpcomingTrip(r.Line)
 	return trip, nil

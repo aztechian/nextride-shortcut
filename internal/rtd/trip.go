@@ -22,23 +22,23 @@ type Station struct {
 }
 
 type Branch struct {
-	ID             string          `json:"id"`
-	RouteColor     string          `json:"routeColor"`
-	RouteTextColor string          `json:"routeTextColor"`
-	RouteLongName  string          `json:"routeLongName"`
-	RouteType      *int            `json:"routeType"`
-	Mode           string          `json:"mode"`
-	Headsign       string          `json:"headsign"`
-	DirectionID    *int            `json:"directionId"`
-	DirectionName  string          `json:"directionName"`
-	StopName       string          `json:"stopName"`
-	StopID         string          `json:"stopId"`
-	AgencyID       string          `json:"agencyId"`
-	DropoffOnly    bool            `json:"dropoffOnly"`
-	UpcomingTrips  []*UpcomingTrip `json:"upcomingTrips"`
+	ID             string  `json:"id"`
+	RouteColor     string  `json:"routeColor"`
+	RouteTextColor string  `json:"routeTextColor"`
+	RouteLongName  string  `json:"routeLongName"`
+	RouteType      *int    `json:"routeType"`
+	Mode           string  `json:"mode"`
+	Headsign       string  `json:"headsign"`
+	DirectionID    *int    `json:"directionId"`
+	DirectionName  string  `json:"directionName"`
+	StopName       string  `json:"stopName"`
+	StopID         string  `json:"stopId"`
+	AgencyID       string  `json:"agencyId"`
+	DropoffOnly    bool    `json:"dropoffOnly"`
+	UpcomingTrips  []*Trip `json:"upcomingTrips"`
 }
 
-type UpcomingTrip struct {
+type Trip struct {
 	PredictedArrivalTime   *int64   `json:"predictedArrivalTime"`
 	PredictedDepartureTime *int64   `json:"predictedDepartureTime"`
 	ScheduledArrivalTime   *int64   `json:"scheduledArrivalTime"`
@@ -52,7 +52,7 @@ type UpcomingTrip struct {
 }
 
 type Vehicle struct {
-	Bearing        *int     `json:"bearing"`
+	Bearing        *float32 `json:"bearing"`
 	ID             string   `json:"id"`
 	Label          string   `json:"label"`
 	Lat            *float32 `json:"lat"`
@@ -63,19 +63,19 @@ type Vehicle struct {
 	Mode           string   `json:"mode"`
 }
 
-func (t *UpcomingTrip) IsValid() bool {
-	return t.Vehicle != nil && t.Vehicle.ID != "" && t.PredictedArrivalTime != nil
+func (t *Trip) IsValid() bool {
+	return (t.Vehicle != nil && t.Vehicle.ID != "") || t.PredictedArrivalTime != nil
 }
 
-func (t *UpcomingTrip) IsScheduled() bool {
+func (t *Trip) IsScheduled() bool {
 	return t.TripStopStatus == SCHEDULED
 }
 
-func (t *UpcomingTrip) IsShuttleBus() bool {
+func (t *Trip) IsShuttleBus() bool {
 	return t.TripStopStatus == SHUTTLE
 }
 
-func (t *UpcomingTrip) GetTime() string {
+func (t *Trip) GetTime() string {
 	if t.PredictedArrivalTime != nil {
 		return relativeTime(*t.PredictedArrivalTime)
 	} else if t.ScheduledArrivalTime != nil {
@@ -85,11 +85,13 @@ func (t *UpcomingTrip) GetTime() string {
 }
 
 func relativeTime(t int64) string {
-	duration := time.Until(time.Unix(t, 0))
-	return fmt.Sprintf("%d minutes", duration.Round(time.Minute))
+	targetTime := time.Unix(t/1000, 0)
+	duration := time.Until(targetTime).Minutes()
+
+	return fmt.Sprintf("%d minutes", int(duration))
 }
 
-func (s *Station) GetUpcomingTrip(line string) *UpcomingTrip {
+func (s *Station) GetUpcomingTrip(line string) *Trip {
 	for _, branch := range s.Branches {
 		if branch.ID == line {
 			for _, trip := range branch.UpcomingTrips {

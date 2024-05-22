@@ -1,85 +1,66 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"context"
+	"flag"
+	stdlog "log"
 	"net/http"
-	"strconv"
+	"os"
+	"os/signal"
+	"time"
 
-	"github.com/aztechian/nextride-shortcut/internal/rtd"
+	"github.com/aztechian/nextride-shortcut/internal/server"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 )
-
-const (
-	A_LINE = "A"
-	B_LINE = "B"
-	D_LINE = "D"
-	E_LINE = "E"
-	G_LINE = "G"
-	H_LINE = "H"
-	L_LINE = "L"
-	N_LINE = "N"
-	R_LINE = "R"
-	W_LINE = "W"
-)
-
-const (
-	DEFAULT_LINE  = E_LINE
-	UNION_STATION = "33727"
-	ARAP_VILLAGE  = "34008"
-	DEFAULT_STOP  = UNION_STATION
-)
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	// Parse parameters from the URL query
-	stopId := r.URL.Query().Get("stop")
-	railLine := r.URL.Query().Get("line")
-
-	// Check if both parameters are provided
-	if stopId == "" || railLine == "" {
-		http.Error(w, "Both stop and line parameters are required", http.StatusBadRequest)
-		return
-	}
-
-	stopIdInt, err := strconv.ParseUint(stopId, 10, 64)
-	if err != nil {
-		http.Error(w, "Invalid stop ID, it must be a number", http.StatusBadRequest)
-		return
-	}
-
-	// Validate railLine value
-	switch railLine {
-	case A_LINE, B_LINE, D_LINE, E_LINE, G_LINE, H_LINE, L_LINE, N_LINE, R_LINE, W_LINE:
-
-		// fmt.Fprintf(w, "Received stopId: %s and railLine: %s", stopId, railLine)
-		api := rtd.NewRtd(railLine, stopIdInt)
-		trip, err := api.Get()
-		if err != nil {
-			http.Error(w, fmt.Sprintf("Failed to get upcoming trip: %v", err), http.StatusInternalServerError)
-			return
-		}
-		if trip == nil {
-			http.Error(w, fmt.Sprintf("No upcoming %s line trips found, check the RTD app", railLine), http.StatusNotFound)
-			return
-		}
-		fmt.Fprintf(w, "The Next %s Line arrives in %s", railLine, trip.GetTime())
-	default:
-		http.Error(w, fmt.Sprintf("%s is not a valid rail line", railLine), http.StatusBadRequest)
-		return
-	}
-}
-
-func redirectHandler(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "/next", http.StatusSeeOther)
-}
 
 func main() {
-	// direct requests to root to /next
-	http.HandleFunc("/", redirectHandler)
+	var listen, level string
+	flag.StringVar(&level, "verbosity", "info", "log level")
+	flag.StringVar(&level, "v", "info", "log level")
+	flag.StringVar(&listen, "listen", ":8080", "address to listen on")
+	flag.StringVar(&listen, "l", ":8080", "address to listen on")
 
-	// Define the route and handler function
-	http.HandleFunc("/next", handler)
+	flag.Parse()
+	setupLogging(level)
+	server := setupServer(listen)
 
+	go startServer(server)
+
+	// Setting up signal capturing
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt)
+
+	// Waiting for SIGINT (kill -2)
+	<-stop
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := server.Shutdown(ctx); err != nil {
+		log.Fatal().Err(err).Msg("Error while shutting down server")
+	}
+}
+
+func setupLogging(userLevel string) {
+	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	if level, err := zerolog.ParseLevel(userLevel); err != nil {
+		zerolog.SetGlobalLevel(level)
+	}
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+}
+
+func setupServer(addr string) *http.Server {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", server.RedirectHandler) // direct requests to root to /next
+	mux.HandleFunc("/next", server.NextHandler)
+	return &http.Server{Addr: addr, Handler: server.Logger(mux), ErrorLog: stdlog.New(log.Logger, "", 0)}
+}
+
+func startServer(server *http.Server) {
 	// Start the HTTP server on port 8080
-	fmt.Println("Server listening on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Info().Str("addr", server.Addr).Msg("starting server")
+	// fmt.Println("Server listening on port 8080...")
+	log.Fatal().
+		Err(server.ListenAndServe()).
+		Msg("closing server")
 }

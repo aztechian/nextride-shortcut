@@ -11,19 +11,22 @@ import (
 
 	"github.com/aztechian/nextride-shortcut/internal/server"
 	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/hlog"
 	"github.com/rs/zerolog/log"
 )
 
 func main() {
 	var listen, level string
+	var proxy bool
 	flag.StringVar(&level, "verbosity", "info", "log level")
 	flag.StringVar(&level, "v", "info", "log level")
 	flag.StringVar(&listen, "listen", ":8080", "address to listen on")
 	flag.StringVar(&listen, "l", ":8080", "address to listen on")
+	flag.BoolVar(&proxy, "proxy", false, "running behind a reverse proxy")
 
 	flag.Parse()
 	setupLogging(level)
-	server := setupServer(listen)
+	server := setupServer(listen, proxy)
 
 	go startServer(server)
 
@@ -46,14 +49,37 @@ func setupLogging(userLevel string) {
 	if level, err := zerolog.ParseLevel(userLevel); err != nil {
 		zerolog.SetGlobalLevel(level)
 	}
-	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+	if pid := os.Getpid(); pid == 1 {
+		log.Logger = zerolog.New(os.Stderr).With().Timestamp().Logger() // json text logger when in a container
+	} else {
+		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+	}
 }
 
-func setupServer(addr string) *http.Server {
+func setupServer(addr string, useProxy bool) *http.Server {
+	commonMiddleware := []server.Middleware{
+		hlog.NewHandler(log.Logger), //just inject the logger in the context here
+		hlog.RequestIDHandler("request_id", "Request-Id"),
+	}
+	if useProxy {
+		// proxy must come before RemoteIPHandler, if its being used
+		commonMiddleware = append(commonMiddleware, server.ProxyMiddleware)
+	}
+	commonMiddleware = append(commonMiddleware,
+		hlog.RemoteIPHandler("remote_ip"),
+		hlog.MethodHandler("method"),
+		hlog.HostHandler("host", true),
+		hlog.URLHandler("url"),
+		hlog.UserAgentHandler("user_agent"),
+		server.LoggerMiddleware,
+		server.SecurityMiddleware,
+		server.HeaderMiddleware,
+	)
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", server.RedirectHandler) // direct requests to root to /next
 	mux.HandleFunc("/next", server.NextHandler)
-	return &http.Server{Addr: addr, Handler: server.Logger(mux), ErrorLog: stdlog.New(log.Logger, "", 0)}
+	return &http.Server{Addr: addr, Handler: server.WrapHandler(mux, commonMiddleware...), ErrorLog: stdlog.New(log.Logger, "", 0)}
 }
 
 func startServer(server *http.Server) {

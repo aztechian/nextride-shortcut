@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+# This ensures that previous jobs for the PR are canceled when the PR is
+# updated.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: aztechian/kube-nut/.github/workflows/docker-build.yaml@main
+    with:
+      platforms: linux/386,linux/amd64,linux/arm64,windows/amd64,windows/386,darwin/arm64,darwin/386

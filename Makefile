@@ -7,7 +7,7 @@ ARCH := $(shell go env GOARCH)
 PROJECT_NAME := $(PROJECT_NAME)-$(OS)-$(ARCH)
 
 .SUFFIXES:
-.PHONY: all coverage lint test race x2unit xunit clean download locallint
+.PHONY: all coverage lint test race x2unit xunit clean download locallint printexe
 
 all: $(PROJECT_NAME) $(PROJECT_NAME).sha256
 
@@ -67,3 +67,7 @@ $(PROJECT_NAME): $(GO_FILES)
 
 download: 
 	@go mod download
+
+printexe:
+	@echo $(PROJECT_NAME)
+

@@ -1,4 +1,4 @@
-name: reviewdog
+name: Test and Build
 on: [pull_request]
 jobs:
   golangci-lint:

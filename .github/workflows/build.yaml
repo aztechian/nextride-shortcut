@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
   test:
@@ -18,10 +16,10 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Setup Go environment
-        uses: actions/setup-go@v5
+      # - name: Setup Go environment
+      #   uses: actions/setup-go@v5
+      #   with:
+      #     go-version-file: go.mod
       - name: test
         run: |
           pwd

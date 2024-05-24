@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Go environment
-        uses: actions/setup-go@v5.0.1
+        uses: actions/setup-go@v5
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
   test:
@@ -18,12 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: golangci-lint
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Setup Go environment
-        uses: actions/setup-go@v5.0.1
       - name: test
         run:
           make coverage
@@ -36,12 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Setup Go environment
-        uses: actions/setup-go@v5.0.1
       - name: compile
         run:
           make all

@@ -8,16 +8,10 @@ on:
     branches:
       - main
       - master
-  # push:
-  #   tags:
-  #     # could be triggered by tagging release, which would be of form "v.N.N.N"
-  #     - v*
-
-# This ensures that previous jobs for the PR are canceled when the PR is
-# updated.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref }}
-  cancel-in-progress: true
+  push:
+    tags:
+      # could be triggered by tagging release, which would be of form "v.N.N.N"
+      - v*
 
 jobs:
   build:

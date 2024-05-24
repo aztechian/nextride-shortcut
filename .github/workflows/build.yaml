@@ -16,10 +16,6 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v3
-      # - name: Setup Go environment
-      #   uses: actions/setup-go@v5
-      #   with:
-      #     go-version-file: go.mod
       - name: test
         run: |
           pwd
@@ -35,7 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
       - name: compile
         run: |
           make all
-        

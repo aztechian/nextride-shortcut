@@ -1,3 +1,5 @@
+name: Docker build
+
 on:
   workflow_run:
     workflows: [Test and Build]
@@ -6,10 +8,10 @@ on:
     branches:
       - main
       - master
-  push:
-    tags:
-      # could be triggered by tagging release, which would be of form "v.N.N.N"
-      - v*
+  # push:
+  #   tags:
+  #     # could be triggered by tagging release, which would be of form "v.N.N.N"
+  #     - v*
 
 # This ensures that previous jobs for the PR are canceled when the PR is
 # updated.

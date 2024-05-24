@@ -1,0 +1,16 @@
+linters:
+  enable:
+    - bodyclose
+    - canonicalheader
+    - cyclop
+    - decorder
+    - gci
+    - goconst
+    - gocritic
+    - gofmt
+    - gosec
+    - misspell
+    - mnd
+    - reassign
+    - testifylint
+    - zerologlint

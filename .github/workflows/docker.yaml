@@ -1,0 +1,27 @@
+name: Docker build
+
+on:
+  workflow_run:
+    workflows: [Test and Build]
+    types:
+      - completed
+    branches:
+      - main
+      - master
+  # push:
+  #   tags:
+  #     # could be triggered by tagging release, which would be of form "v.N.N.N"
+  #     - v*
+
+# This ensures that previous jobs for the PR are canceled when the PR is
+# updated.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event.workflow_run.conclusion == 'success'
+    uses: aztechian/kube-nut/.github/workflows/docker-build.yaml@main
+    with:
+      platforms: linux/386,linux/amd64,linux/arm64,windows/amd64,windows/386,darwin/arm64,darwin/386

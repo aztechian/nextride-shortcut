@@ -2,7 +2,6 @@ package rtd_test
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"testing"
 	"time"
@@ -75,17 +74,4 @@ func TestGetUpcomingTrip(t *testing.T) {
 			}
 		})
 	}
-}
-
-func TestUnmarshal(t *testing.T) {
-	filePath := "../../test/25434.json"
-
-	data, _ := os.OpenFile(filePath, os.O_RDONLY, 0)
-	// data, _ := os.ReadFile(filePath)
-	var station *rtd.Station
-	_ = json.NewDecoder(data).Decode(&station)
-
-	trip := station.GetUpcomingTrip("E")
-	fmt.Println(trip)
-	fmt.Println(trip.GetTime())
 }

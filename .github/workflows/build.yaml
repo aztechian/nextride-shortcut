@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
   test:
@@ -15,15 +15,12 @@ jobs:
     needs: golangci-lint
     steps:
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: test
         run: |
-          pwd
-          ls -al
-          go version
           make coverage
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
   build:
@@ -32,7 +29,7 @@ jobs:
     needs: test
     steps:
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: compile
         run: |
           make all

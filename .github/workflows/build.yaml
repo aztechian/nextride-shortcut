@@ -16,10 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: golangci-lint
     steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Go environment
+        uses: actions/setup-go@v5
       - name: test
         run: |
           pwd
           ls -al
+          go version
           make coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1

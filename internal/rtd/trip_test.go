@@ -2,7 +2,6 @@ package rtd_test
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"testing"
 	"time"

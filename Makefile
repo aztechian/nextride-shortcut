@@ -5,11 +5,12 @@ GO_FILES := $(shell find . -type f -name '*.go' | grep -v _test.go)
 OS := $(shell go env GOOS)
 ARCH := $(shell go env GOARCH)
 PROJECT_NAME := $(PROJECT_NAME)-$(OS)-$(ARCH)
+BINDIR := bin
 
 .SUFFIXES:
 .PHONY: all coverage lint test race x2unit xunit clean download locallint printexe
 
-all: $(PROJECT_NAME) $(PROJECT_NAME).sha256
+all: $(BINDIR)/$(PROJECT_NAME) $(BINDIR)/$(PROJECT_NAME).sha256
 
 ifeq ($(GITHUB_ACTIONS),)
 coverage: html
@@ -55,17 +56,17 @@ run:
 	@go run $(CMD) --verbosity debug
 
 clean:
-	@rm -rf tests.xml tests.out coverage.out *.sha256 main cilint.txt $(PKG) $(PKG)-*
+	@rm -rf tests.xml tests.out coverage.out *.sha256 main cilint.txt $(BINDIR)/ $(PKG) $(PKG)-*
 	@docker rm --force $(PKG) &> /dev/null || true
 	@go mod tidy
 
-$(PROJECT_NAME): $(GO_FILES)
+$(BINDIR)/$(PROJECT_NAME): $(GO_FILES)
 	@go build -v -o $@ $(LDFLAGS) $(CMD)
 
 %.sha256:
 	@openssl dgst -sha256 -hex $* | cut -f2 -d' ' > $@
 
-download: 
+download:
 	@go mod download
 
 printexe:

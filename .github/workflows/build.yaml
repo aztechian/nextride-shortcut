@@ -40,9 +40,10 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
       - name: restore cached modules
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          key: ${{ runner.os }}-golangci-${{ hashFiles('**/go.sum') }}
+          key: linux-golangci-${{ hashFiles('**/go.sum') }}
+          path: ["~/.cache/golangci-lint", "~/.cache/go-build", "~/go/pkg"]
       - name: test
         run: |
           make coverage
@@ -71,9 +72,10 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
       - name: restore cached modules
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
-          key: ${{ runner.os }}-golangci-${{ hashFiles('**/go.sum') }}
+          key: linux-golangci-${{ hashFiles('**/go.sum') }}
+          path: ["~/.cache/golangci-lint", "~/.cache/go-build", "~/go/pkg"]
       - name: compile
         env:
           # disable CGO to make fully static binaries

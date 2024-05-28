@@ -24,14 +24,14 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
-      - name: download go modules
-        run: make download
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
         with:
           fail_on_error: true
-          go_version_file: go.mod
+          go_version_file: .
           reporter: github-pr-review
+      - name: download go modules to be cached
+        run: make download
   test:
     name: test
     runs-on: ubuntu-latest

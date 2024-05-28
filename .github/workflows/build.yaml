@@ -105,6 +105,16 @@ jobs:
             type=semver,event=tag,pattern={{version}}
             type=semver,event=tag,pattern={{major}}
             type=sha,event=pr,format=short
+      - name: debug
+        run: |
+          echo "::group::Docker build debugging"
+          echo "working directory ($pwd)"
+          ls -al
+          echo "bin directory"
+          ls -al bin
+          echo version: ${{ steps.meta.outputs.version }}
+          echo tags: ${{ steps.meta.outputs.tags }}
+          echo labels: ${{ steps.meta.outputs.labels }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx

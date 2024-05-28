@@ -18,12 +18,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  golangci-lint:
-    name: lint
+  lint:
+    name: golangci-lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
+      - name: download go modules
+        run: make download
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
         with:
@@ -33,10 +35,14 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    needs: golangci-lint
+    needs: lint
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
+      - name: restore cached modules
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-golangci-${{ hashFiles('**/go.sum') }}
       - name: test
         run: |
           make coverage
@@ -64,6 +70,10 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
+      - name: restore cached modules
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-golangci-${{ hashFiles('**/go.sum') }}
       - name: compile
         env:
           # disable CGO to make fully static binaries
@@ -113,9 +123,9 @@ jobs:
           ls -al
           echo "bin directory"
           ls -al bin
-          echo version: ${{ steps.meta.outputs.version }}
-          echo tags: ${{ steps.meta.outputs.tags }}
-          echo labels: ${{ steps.meta.outputs.labels }}
+          echo "version: ${{ steps.meta.outputs.version }}"
+          echo "tags: ${{ steps.meta.outputs.tags }}"
+          echo "labels: ${{ steps.meta.outputs.labels }}"
           echo "::endgroup::"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

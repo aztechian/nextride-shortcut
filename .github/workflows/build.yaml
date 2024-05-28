@@ -67,7 +67,7 @@ jobs:
       fail-fast: true
       matrix:
         os: [linux, windows, darwin]
-        arch: [amd64, arm64, "386"]
+        arch: [amd64, arm64, arm]
         exclude:
           - os: darwin
             arch: "386"
@@ -103,7 +103,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [linux] #, windows, darwin]
-        arch: [amd64, arm64, "386"]
+        arch: [amd64, arm64, arm]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -143,7 +143,6 @@ jobs:
             - GOARCH=${{ matrix.arch }}
           platforms: ${{ matrix.os }}/${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}
           outputs: type=registry,name=${{ github.repository }},push-by-digest=true,name-canonical=true
       - name: Export digest
         run: |
@@ -203,6 +202,7 @@ jobs:
         with:
           pattern: binaries-*
           merge-multiple: true
+          path: bin/
       - name: create release
         uses: softprops/action-gh-release@v2
         with:

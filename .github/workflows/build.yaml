@@ -43,7 +43,10 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           key: linux-golangci-${{ hashFiles('**/go.sum') }}
-          path: ["~/.cache/golangci-lint", "~/.cache/go-build", "~/go/pkg"]
+          path: |
+            ~/.cache/golangci-lint
+            ~/.cache/go-build
+            ~/go/pkg
       - name: test
         run: |
           make coverage
@@ -75,7 +78,10 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           key: linux-golangci-${{ hashFiles('**/go.sum') }}
-          path: ["~/.cache/golangci-lint", "~/.cache/go-build", "~/go/pkg"]
+          path: |
+            ~/.cache/golangci-lint
+            ~/.cache/go-build
+            ~/go/pkg
       - name: compile
         env:
           # disable CGO to make fully static binaries

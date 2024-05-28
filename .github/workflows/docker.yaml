@@ -5,9 +5,6 @@ on:
     workflows: [Test and Build]
     types:
       - completed
-    branches:
-      - main
-      - master
   push:
     tags:
       # could be triggered by tagging release, which would be of form "v.N.N.N"

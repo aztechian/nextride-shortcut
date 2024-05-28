@@ -124,17 +124,6 @@ jobs:
             type=semver,event=tag,pattern={{version}}
             type=semver,event=tag,pattern={{major}}
             type=sha,event=pr,format=short
-      - name: debug prior to docker build
-        run: |
-          echo "::group::Docker build debugging"
-          echo "working directory ($pwd)"
-          ls -al
-          echo "bin directory"
-          ls -al bin
-          echo "version: ${{ steps.meta.outputs.version }}"
-          echo "tags: ${{ steps.meta.outputs.tags }}"
-          echo "labels: ${{ steps.meta.outputs.labels }}"
-          echo "::endgroup::"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -155,7 +144,7 @@ jobs:
           platforms: ${{ matrix.os }}/${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          outputs: type=image,name=${{ github.repository }},push-by-digest=true,name-canonical=true,push=true
+          outputs: type=registry,name=${{ github.repository }},push-by-digest=true,name-canonical=true
       - name: Export digest
         run: |
           mkdir -p /tmp/digests

@@ -8,7 +8,7 @@ PROJECT_NAME := $(PROJECT_NAME)-$(OS)-$(ARCH)
 BINDIR := bin
 
 .SUFFIXES:
-.PHONY: all coverage lint test race x2unit xunit clean download locallint printexe
+.PHONY: all coverage lint test race x2unit xunit clean download locallint docker
 
 all: $(BINDIR)/$(PROJECT_NAME) $(BINDIR)/$(PROJECT_NAME).sha256
 
@@ -69,6 +69,5 @@ $(BINDIR)/$(PROJECT_NAME): $(GO_FILES)
 download:
 	@go mod download
 
-printexe:
-	@echo $(PROJECT_NAME)
-
+docker: $(BINDIR)/$(PROJECT_NAME)
+	@docker build -t $(PROJECT_NAME):dev --build-arg GOOS=$(OS) --build-arg GOARCH=$(ARCH) .

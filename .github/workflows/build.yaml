@@ -94,6 +94,7 @@ jobs:
         with:
           pattern: binaries-*
           merge-multiple: true
+          path: bin/
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5

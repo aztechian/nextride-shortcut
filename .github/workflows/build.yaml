@@ -60,9 +60,9 @@ jobs:
       - name: set test status
         if: always()
         uses: test-summary/action@v2
+        # potentially switch to EnricoMi/publish-unit-test-result-action
         with:
           paths: report.xml
-          # output: test-summary.md
       - name: save test artifacts
         if: always()
         uses: actions/upload-artifact@v4

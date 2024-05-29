@@ -14,3 +14,8 @@ linters:
     - reassign
     - testifylint
     - zerologlint
+issues:
+  new-from-rev: HEAD
+run:
+  tests: false
+  modules-download-mode: readonly

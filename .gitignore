@@ -13,6 +13,8 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+/report.xml
+/test-summary.md
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
@@ -23,3 +25,4 @@ go.work
 # binaries
 /nextride-shortcut
 /server
+/bin

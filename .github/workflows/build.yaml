@@ -62,7 +62,7 @@ jobs:
         uses: test-summary/action@v2
         with:
           paths: report.xml
-          output: test-summary.md
+          # output: test-summary.md
       - name: save test artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -71,7 +71,6 @@ jobs:
           path: |
             coverage.html
             report.xml
-            test-summary.md
   build:
     name: build
     runs-on: ubuntu-latest

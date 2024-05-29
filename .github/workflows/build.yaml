@@ -45,18 +45,30 @@ jobs:
             ~/.cache/golangci-lint
             ~/.cache/go-build
             ~/go/pkg
+      - name: install go-junit-report
+        run: go install github.com/jstemmer/go-junit-report/v2@latest
       - name: test
         run: |
-          make coverage
+          make report.xml
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      - name: set test status
+        if: always()
+        uses: test-summary/action@v2
+        with:
+          path: report.xml
+          output: test-summary.md
       - name: save test artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-coverage
-          path: coverage.html
+          name: test-status
+          path: |
+            coverage.html
+            report.xml
+            test-summary.md
   build:
     name: build
     runs-on: ubuntu-latest

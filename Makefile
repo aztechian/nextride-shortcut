@@ -2,61 +2,48 @@ PROJECT_NAME := nextride-shortcut
 PKG := "$(PROJECT_NAME)"
 CMD := server.go
 GO_FILES := $(shell find . -type f -name '*.go' | grep -v _test.go)
+TEST_FILES := $(shell find . -type f -name '*_test.go')
 OS := $(shell go env GOOS)
 ARCH := $(shell go env GOARCH)
 PROJECT_NAME := $(PROJECT_NAME)-$(OS)-$(ARCH)
 BINDIR := bin
 
 .SUFFIXES:
-.PHONY: all coverage lint test race x2unit xunit clean download locallint docker
+.PHONY: all coverage lint test junit clean download docker
 
 all: $(BINDIR)/$(PROJECT_NAME) $(BINDIR)/$(PROJECT_NAME).sha256
-
-ifeq ($(GITHUB_ACTIONS),)
-coverage: html
-lint: locallint
-else
-coverage: coverage.out
-lint: cilint.txt
-endif
 
 ifdef GITHUB_HEAD_REF
 LDFLAGS := -ldflags="-X main.Version=$(GITHUB_HEAD_REF)"
 endif
 
-locallint:
-	@golangci-lint run
-
-cilint.txt: $(GO_FILES)
-	@golangci-lint run --out-format=line-number --new-from-rev=master --issues-exit-code=0 > $@
+lint:
+	@golangci-lint run --out-format=line-number
 
 test:
 	@go test -short ./...
 
-race:
-	@go test -v -count=1 -race ./...
+coverage.out: $(GO_FILES) $(TEST_FILES)
+	@go test -v -race -covermode=atomic -coverprofile=$@ ./... 2>&1 | tee tests.out
 
-coverage.out: $(GO_FILES)
-	@go test -v -race -covermode=atomic -coverprofile=$@ ./...
-
-html: coverage.out
+coverage: coverage.out
+ifeq ($(GITHUB_ACTIONS),)
 	@go tool cover --html=$<
+else
+	@go tool cover --html=$< -o coverage.html
+endif
 
-x2unit:
-	go get github.com/tebeka/go2xunit
+junit:
+	@go install github.com/jstemmer/go-junit-report@latest
 
-tests.out:
-	@go test -v -race ./... > $@
-
-xunit: x2unit tests.out
-	go2xunit -fail -input tests.out -output tests.xml
-	@rm -f tests.out
+report.xml: coverage
+	@go-junit-report -set-exit-code < tests.out > $@
 
 run:
 	@go run $(CMD) --verbosity debug
 
 clean:
-	@rm -rf tests.xml tests.out coverage.out *.sha256 main cilint.txt $(BINDIR)/ $(PKG) $(PKG)-*
+	@rm -rf tests.xml *.out report.xml *.sha256 main cilint.txt $(BINDIR)/ $(PKG) $(PKG)-*
 	@docker rm --force $(PKG) &> /dev/null || true
 	@go mod tidy
 

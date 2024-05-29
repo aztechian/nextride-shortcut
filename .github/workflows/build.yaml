@@ -58,7 +58,7 @@ jobs:
         if: always()
         uses: test-summary/action@v2
         with:
-          path: report.xml
+          paths: report.xml
           output: test-summary.md
       - name: save test artifacts
         if: always()

@@ -44,7 +44,7 @@ jobs:
 
     name: chart-release
     needs: lint
-    if: (github.event_name == 'push' && github.ref_name == github.repository.default_branch) || startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' # don't run on PRs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -70,7 +70,6 @@ jobs:
       changed_charts: ${{ steps.releaser.outputs.changed_charts }}
 
   chart-publish:
-    if: startsWith(github.ref, 'refs/tags/v')
     permissions:
       contents: write
       id-token: write

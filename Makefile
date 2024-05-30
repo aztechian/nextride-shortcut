@@ -13,8 +13,8 @@ BINDIR := bin
 
 all: $(BINDIR)/$(PROJECT_NAME) $(BINDIR)/$(PROJECT_NAME).sha256
 
-ifdef GITHUB_HEAD_REF
-LDFLAGS := -ldflags="-X main.Version=$(GITHUB_HEAD_REF)"
+ifdef GITHUB_REF_NAME
+LDFLAGS := -ldflags="-X main.Version=$(GITHUB_REF_NAME)"
 endif
 
 lint:

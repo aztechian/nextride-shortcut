@@ -79,6 +79,7 @@ func setupServer(addr string, useProxy bool) *http.Server {
 	)
 
 	mux := http.NewServeMux()
+	mux.HandleFunc("/healthz", server.HealthzHandler)
 	mux.HandleFunc("/", server.RedirectHandler) // direct requests to root to /next
 	mux.HandleFunc("/next", server.NextHandler)
 	return &http.Server{Addr: addr, Handler: server.WrapHandler(mux, commonMiddleware...), ErrorLog: stdlog.New(log.Logger, "", 0)}

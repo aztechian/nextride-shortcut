@@ -30,8 +30,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Helm
         uses: azure/setup-helm@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run helm lint
         run: |
           cd deployments/charts/nextride-shortcut

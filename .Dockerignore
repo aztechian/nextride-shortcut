@@ -1,7 +1,0 @@
-/Dockerfile
-/.Dockerignore
-/.github
-/.golangci.yaml
-/.tool-versions
-/README.md
-/test

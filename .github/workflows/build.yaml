@@ -198,6 +198,8 @@ jobs:
   manifest:
     name: publish docker manifest
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     needs:
       - dockerresult
     steps:

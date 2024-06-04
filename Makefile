@@ -1,11 +1,10 @@
-PROJECT_NAME := nextride-shortcut
-PKG := "$(PROJECT_NAME)"
+PKG := nextride-shortcut
 CMD := server.go
 GO_FILES := $(shell find . -type f -name '*.go' | grep -v _test.go)
 TEST_FILES := $(shell find . -type f -name '*_test.go')
 OS := $(shell go env GOOS)
 ARCH := $(shell go env GOARCH)
-PROJECT_NAME := $(PROJECT_NAME)-$(OS)-$(ARCH)
+PROJECT_NAME := $(PKG)-$(OS)-$(ARCH)
 BINDIR := bin
 
 .SUFFIXES:
@@ -57,4 +56,4 @@ download:
 	@go mod download
 
 docker: $(BINDIR)/$(PROJECT_NAME)
-	@docker build -t $(PROJECT_NAME):dev --build-arg GOOS=$(OS) --build-arg GOARCH=$(ARCH) .
+	@docker build -t $(PKG):dev --build-arg GOOS=linux --build-arg GOARCH=$(ARCH) .

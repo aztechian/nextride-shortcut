@@ -19,7 +19,7 @@ spec:
       {{- end }}
       labels:
         {{- include "nextride-shortcut.labels" . | nindent 8 }}
-	{{- with .Values.podLabels }}
+        {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
@@ -36,6 +36,11 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            {{- range $k, $v := .Values.env }}
+            - name: {{ $k | upper | quote }}
+              value: {{ $v | quote }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 8080

@@ -230,6 +230,17 @@ jobs:
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf '${{ github.repository }}@sha256:%s ' *)
+      - name: Comment on PR with latest docker image info
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            The [${DOCKER_METADATA_OUTPUT_VERSION}](https://hub.docker.com/${DOCKER_METADATA_OUTPUT_TAGS}/images) :whale: image has been built and pushed to https://hub.docker.com/${DOCKER_METADATA_OUTPUT_TAGS}/images.
+            You can pull it with:
+            ```shell
+            docker pull ${DOCKER_METADATA_OUTPUT_TAGS}
+            ```
+          comment_tag: docker-image-ref
       - name: Inspect image
         run: |
           docker buildx imagetools inspect ${{ github.repository }}:${{ steps.meta.outputs.version }}

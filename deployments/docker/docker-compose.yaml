@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    networks:
+      - nextride-shortcut
+    image: aztechian/nextride-shortcut:latest
+    ports:
+      - 8080:8080
+    command:
+      - -verbosity
+      - debug
+networks:
+  nextride-shortcut:

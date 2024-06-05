@@ -31,13 +31,12 @@ podLabels: {}
 # -- override settings in podSecurityContext. The defaults are currently set to secure defaults that are required for running the nextride-shortcut app
 podSecurityContext:
   fsGroup: 0
-  runAsNonRoot: true
-  runAsGroup: 0
   seccompProfile:
     type: RuntimeDefault
 
 securityContext:
   allowPrivilegeEscalation: false
+  runAsNonRoot: true
   capabilities:
     drop:
       - ALL
@@ -56,10 +55,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations: {}
   hostname: nextride.local
   extraHosts:
     []
@@ -71,6 +67,7 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  pathType:
 
 resources:
   {}

@@ -237,7 +237,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            The [${{env.DOCKER_METADATA_OUTPUT_VERSION}}](https://hub.docker.com/${{env.DOCKER_METADATA_OUTPUT_TAGS}}/images) :whale: image has been built and [pushed](https://hub.docker.com/${{env.DOCKER_METADATA_OUTPUT_TAGS}}/images).
+            The [${{env.DOCKER_METADATA_OUTPUT_VERSION}}](https://hub.docker.com/repository/docker/${{ github.repository }}/tags) :whale: image has been built and [pushed](https://hub.docker.com/repository/docker/${{ github.repository }}/tags).
             You can pull it with:
             ```shell
             docker pull ${{env.DOCKER_METADATA_OUTPUT_TAGS}}

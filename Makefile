@@ -56,4 +56,5 @@ download:
 	@go mod download
 
 docker: $(BINDIR)/$(PROJECT_NAME)
+	@chmod +x $(BINDIR)/$(PROJECT_NAME)
 	@docker build -t $(PKG):dev --build-arg GOOS=linux --build-arg GOARCH=$(ARCH) .

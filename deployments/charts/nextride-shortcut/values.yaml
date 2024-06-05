@@ -32,7 +32,7 @@ podLabels: {}
 podSecurityContext:
   fsGroup: 0
   runAsNonRoot: true
-  runAsUser: 1001
+  runAsGroup: 0
   seccompProfile:
     type: RuntimeDefault
 

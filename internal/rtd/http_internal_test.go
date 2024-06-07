@@ -34,6 +34,6 @@ func TestUnmarshal(t *testing.T) {
 		}
 
 		assert.Equal(t, tt.stationName, station.Name)
-		assert.Equal(t, tt.branchCount, len(station.Branches))
+		assert.Len(t, station.Branches, tt.branchCount)
 	}
 }

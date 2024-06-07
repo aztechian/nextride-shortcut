@@ -7,9 +7,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/aztechian/nextride-shortcut/internal/rtd"
+	"github.com/stretchr/testify/assert"
 )
 
 // FileResponder .

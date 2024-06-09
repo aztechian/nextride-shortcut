@@ -17,6 +17,12 @@ import (
 
 var Version = "dev"
 
+const (
+	SHUTDOWN_TIMEOUT    = 5 * time.Second
+	READ_HEADER_TIMEOUT = 2 * time.Second
+	ERR_EXIT            = 3
+)
+
 func main() {
 	var listen, level string
 	var proxy bool
@@ -39,10 +45,11 @@ func main() {
 	// Waiting for SIGINT (kill -2)
 	<-stop
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), SHUTDOWN_TIMEOUT)
 	defer cancel()
 	if err := server.Shutdown(ctx); err != nil {
-		log.Fatal().Err(err).Msg("Error while shutting down server")
+		log.WithLevel(zerolog.FatalLevel).Err(err).Msg("Error while shutting down server")
+		return
 	}
 }
 
@@ -64,7 +71,7 @@ func setupLogging(userLevel string) {
 
 func setupServer(addr string, useProxy bool) *http.Server {
 	commonMiddleware := []server.Middleware{
-		hlog.NewHandler(log.Logger), //just inject the logger in the context here
+		hlog.NewHandler(log.Logger), // just inject the logger in the context here
 		hlog.RequestIDHandler("request_id", "Request-Id"),
 	}
 	if useProxy {
@@ -86,7 +93,7 @@ func setupServer(addr string, useProxy bool) *http.Server {
 	mux.HandleFunc("/healthz", server.HealthzHandler)
 	mux.HandleFunc("/", server.RedirectHandler) // direct requests to root to /next
 	mux.HandleFunc("/next", server.NextHandler)
-	return &http.Server{Addr: addr, Handler: server.WrapHandler(mux, commonMiddleware...), ErrorLog: stdlog.New(log.Logger, "", 0)}
+	return &http.Server{Addr: addr, ReadHeaderTimeout: READ_HEADER_TIMEOUT, Handler: server.WrapHandler(mux, commonMiddleware...), ErrorLog: stdlog.New(log.Logger, "", 0)}
 }
 
 func startServer(server *http.Server) {

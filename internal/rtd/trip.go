@@ -8,6 +8,7 @@ import (
 const (
 	SCHEDULED = "SCHEDULED"
 	SHUTTLE   = "BUS SHUTTLE"
+	MS_TO_SEC = 1000
 )
 
 type Station struct {
@@ -85,7 +86,7 @@ func (t *Trip) GetTime() string {
 }
 
 func relativeTime(t int64) string {
-	targetTime := time.Unix(t/1000, 0)
+	targetTime := time.Unix(t/MS_TO_SEC, 0)
 	duration := time.Until(targetTime).Minutes()
 
 	return fmt.Sprintf("%d minutes", int(duration))

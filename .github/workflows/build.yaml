@@ -164,8 +164,8 @@ jobs:
         with:
           context: .
           build-args: |
-            - GOOS=${{ matrix.os }}
-            - GOARCH=${{ matrix.arch }}
+            GOOS=${{ matrix.os }}
+            GOARCH=${{ matrix.arch }}
           platforms: ${{ matrix.os }}/${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=registry,name=${{ github.repository }},push-by-digest=true,name-canonical=true

@@ -37,15 +37,15 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            {{- if .Values.verbosity -}}
+            {{- if .Values.verbosity }}
             - --verbosity={{ .Values.verbosity | default "info" }}
-            {{- end -}}
-            {{- if or .Values.ingress.enabled .Values.proxyOverride -}}
+            {{- end }}
+            {{- if or .Values.ingress.enabled .Values.proxyOverride }}
             - --proxy={{ .Values.proxyOverride | default true | quote }}
-            {{- end -}}
-            {{- if .Values.apiKey -}}
+            {{- end }}
+            {{- if .Values.apiKey }}
             - --apiKey={{ .Values.apiKey | quote }}
-            {{- end -}}
+            {{- end }}
           env:
             {{- range $k, $v := .Values.env }}
             - name: {{ $k | upper | quote }}

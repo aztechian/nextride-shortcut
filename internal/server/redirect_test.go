@@ -10,7 +10,7 @@ import (
 )
 
 func TestRedirectHandler(t *testing.T) {
-	req, err := http.NewRequest(http.MethodGet, "/healthz", nil)
+	req, err := http.NewRequest(http.MethodGet, "/", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

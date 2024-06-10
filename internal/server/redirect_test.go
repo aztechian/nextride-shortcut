@@ -10,15 +10,12 @@ import (
 )
 
 func TestRedirectHandler(t *testing.T) {
-	req, err := http.NewRequest(http.MethodGet, "/", nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	rr := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 
 	handler := http.HandlerFunc(server.RedirectHandler)
+	rr := httptest.NewRecorder()
 	handler.ServeHTTP(rr, req)
-	assert.Equal(t, http.StatusSeeOther, rr.Code)
+
 	assert.Contains(t, rr.Header().Get("Location"), "/next")
+	assert.HTTPStatusCode(t, server.RedirectHandler, "GET", "/", nil, http.StatusSeeOther)
 }

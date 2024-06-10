@@ -10,7 +10,7 @@ import (
 
 // LoggerMiddleware is a middleware that logs the request and response
 func LoggerMiddleware(next http.Handler) http.Handler {
-	loggingFn := func(rw http.ResponseWriter, req *http.Request) {
+	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
 
 		hlog.AccessHandler(func(r *http.Request, status, size int, duration time.Duration) {
 			logger := hlog.FromRequest(r)
@@ -26,6 +26,5 @@ func LoggerMiddleware(next http.Handler) http.Handler {
 				Dur("elapsed_ms", duration).
 				Msg("http access request")
 		})(next).ServeHTTP(rw, req)
-	}
-	return http.HandlerFunc(loggingFn)
+	})
 }

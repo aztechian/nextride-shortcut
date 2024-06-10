@@ -79,7 +79,7 @@ resources:
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 5
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
@@ -104,3 +104,8 @@ affinity: {}
 
 # -- Add Environment variables to the container. A map of key-value pairs
 env: {}
+
+proxyOverride: ""
+verbosity: ""
+# -- The API key to use for requests to the RTD API
+apiKey: ""

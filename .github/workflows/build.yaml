@@ -164,8 +164,8 @@ jobs:
         with:
           context: .
           build-args: |
-            - GOOS=${{ matrix.os }}
-            - GOARCH=${{ matrix.arch }}
+            GOOS=${{ matrix.os }}
+            GOARCH=${{ matrix.arch }}
           platforms: ${{ matrix.os }}/${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=registry,name=${{ github.repository }},push-by-digest=true,name-canonical=true
@@ -198,6 +198,8 @@ jobs:
   manifest:
     name: publish docker manifest
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     needs:
       - dockerresult
     steps:
@@ -230,6 +232,17 @@ jobs:
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf '${{ github.repository }}@sha256:%s ' *)
+      - name: Comment on PR with latest docker image info
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            The [${{env.DOCKER_METADATA_OUTPUT_VERSION}}](https://hub.docker.com/repository/docker/${{ github.repository }}/tags) :whale: image has been built and [pushed](https://hub.docker.com/repository/docker/${{ github.repository }}/tags).
+            You can pull it with:
+            ```shell
+            docker pull ${{env.DOCKER_METADATA_OUTPUT_TAGS}}
+            ```
+          comment_tag: docker-image-ref
       - name: Inspect image
         run: |
           docker buildx imagetools inspect ${{ github.repository }}:${{ steps.meta.outputs.version }}

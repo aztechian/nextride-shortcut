@@ -8,6 +8,6 @@ import (
 
 func ProxyMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		handlers.ProxyHeaders(next)
+		handlers.ProxyHeaders(next).ServeHTTP(w, r)
 	})
 }

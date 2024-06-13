@@ -15,13 +15,15 @@ Deploys the nextride-shortcut application to kubernetes. See https://github.com/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| apiKey | string | `""` | The API key to use for requests to the RTD API |
 | autoscaling.enabled | bool | `false` |  |
-| autoscaling.maxReplicas | int | `100` |  |
+| autoscaling.maxReplicas | int | `5` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| env | object | `{}` | Add Environment variables to the container. A map of key-value pairs |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"nginx"` |  |
+| image.repository | string | `"aztechian/nextride-shortcut"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
@@ -29,15 +31,20 @@ Deploys the nextride-shortcut application to kubernetes. See https://github.com/
 | ingress.enabled | bool | `false` |  |
 | ingress.extraHosts | list | `[]` |  |
 | ingress.hostname | string | `"nextride.local"` |  |
+| ingress.pathType | string | `nil` |  |
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext | object | `{"fsGroup":0,"seccompProfile":{"type":"RuntimeDefault"}}` | override settings in podSecurityContext. The defaults are currently set to secure defaults that are required for running the nextride-shortcut app |
+| proxyOverride | string | `""` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` |  |
+| securityContext.allowPrivilegeEscalation | bool | `false` |  |
+| securityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| securityContext.readOnlyRootFilesystem | bool | `true` |  |
+| securityContext.runAsNonRoot | bool | `true` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
@@ -45,6 +52,7 @@ Deploys the nextride-shortcut application to kubernetes. See https://github.com/
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
 | tolerations | list | `[]` |  |
+| verbosity | string | `""` |  |
 | volumeMounts | list | `[]` |  |
 | volumes | list | `[]` |  |
 

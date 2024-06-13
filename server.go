@@ -55,13 +55,17 @@ func main() {
 
 func setupLogging(userLevel string) {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
-	if level, err := zerolog.ParseLevel(userLevel); err != nil {
-		zerolog.SetGlobalLevel(level)
-	}
 	if pid := os.Getpid(); pid == 1 {
 		log.Logger = zerolog.New(os.Stderr).With().Timestamp().Logger() // json text logger when in a container
 	} else {
 		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+	}
+
+	if level, err := zerolog.ParseLevel(userLevel); err != nil {
+		zerolog.SetGlobalLevel(zerolog.InfoLevel)
+		log.Warn().Err(err).Msg("invalid log level, defaulting to info")
+	} else {
+		zerolog.SetGlobalLevel(level)
 	}
 }
 

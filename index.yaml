@@ -2,6 +2,30 @@ apiVersion: v1
 entries:
   nextride-shortcut:
   - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2024-06-13T22:06:31.413961619Z"
+    description: Deploys the nextride-shortcut application to kubernetes. See https://github.com/aztechian/nextride-shortcut
+      for more information about the application.
+    digest: a46929b94d9fe2736d2ac4dac1cc913d4cb704eca478f35fcd73e4d8e505ebc2
+    keywords:
+    - nextride
+    - denver
+    - rtd
+    - lightrail
+    - ios
+    - shortcut
+    - siri
+    - applewatch
+    maintainers:
+    - email: ian@imartin.net
+      name: Ian Martin
+      url: https://imartin.net
+    name: nextride-shortcut
+    type: application
+    urls:
+    - https://github.com/aztechian/nextride-shortcut/releases/download/nextride-shortcut-1.1.1/nextride-shortcut-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2024-06-13T04:44:50.99604539Z"
     description: Deploys the nextride-shortcut application to kubernetes. See https://github.com/aztechian/nextride-shortcut
@@ -49,4 +73,4 @@ entries:
     urls:
     - https://github.com/aztechian/nextride-shortcut/releases/download/nextride-shortcut-1.0.0/nextride-shortcut-1.0.0.tgz
     version: 1.0.0
-generated: "2024-06-13T04:44:50.996054597Z"
+generated: "2024-06-13T22:06:31.414040927Z"

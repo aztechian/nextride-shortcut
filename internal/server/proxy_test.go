@@ -10,9 +10,9 @@ import (
 )
 
 var (
-	testHeader = http.CanonicalHeaderKey("x-forwarded-for")
-	realIp     = "192.168.19.10"
-	proxyIp    = "10.0.0.2"
+	xff     = http.CanonicalHeaderKey("x-forwarded-for")
+	realIp  = "192.168.19.10"
+	proxyIp = "10.0.0.2"
 )
 
 func TestProxyHandler(t *testing.T) {
@@ -22,7 +22,7 @@ func TestProxyHandler(t *testing.T) {
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	req.RemoteAddr = proxyIp
 	req.Header = map[string][]string{
-		testHeader: {realIp},
+		xff: {realIp},
 	}
 
 	middleware := server.ProxyMiddleware(validationHandler)

@@ -16,7 +16,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Automatically mount a ServiceAccount's API credentials?
   automount: true
   # Annotations to add to the service account
@@ -51,16 +51,18 @@ ingress:
   className: ""
   annotations: {}
   hostname: nextride.local
+  tls:
+    enabled: false
+    extraTls: []
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
   extraHosts:
     []
     # - host: chart-example.local
     #   paths:
     #     - path: /
     #       pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
   pathType:
 
 resources:

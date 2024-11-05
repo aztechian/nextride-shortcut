@@ -1,0 +1,180 @@
+{
+    "id": "34008",
+    "name": "Arapahoe at Village Center Station",
+    "lat": 39.600442,
+    "lng": -104.888539,
+    "childStops": [],
+    "parentStationName": "Arapahoe at Village Center Station",
+    "parentStationId": "33705",
+    "branches": [
+        {
+            "id": "E",
+            "routeColor": "#552683",
+            "routeTextColor": "#FFFFFF",
+            "routeLongName": "Union Station to RidgeGate Parkway Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "Union Station",
+            "directionId": 0,
+            "directionName": "Northbound",
+            "stopName": "Arapahoe at Village Center Station",
+            "stopId": "34008",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730783340000,
+                    "scheduledDepartureTime": 1730783340000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073212",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730785140000,
+                    "scheduledDepartureTime": 1730785140000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073307",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730786940000,
+                    "scheduledDepartureTime": 1730786940000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073211",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730788740000,
+                    "scheduledDepartureTime": 1730788740000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073308",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730808540000,
+                    "scheduledDepartureTime": 1730808540000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073302",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730810340000,
+                    "scheduledDepartureTime": 1730810340000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115073228",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        },
+        {
+            "id": "R",
+            "routeColor": "#C4D600",
+            "routeTextColor": "#000000",
+            "routeLongName": "Lincoln Station to Peoria Station",
+            "routeType": 2,
+            "mode": "RAIL",
+            "headsign": "R Line Peoria Station",
+            "directionId": 0,
+            "directionName": "Northbound",
+            "stopName": "Arapahoe at Village Center Station",
+            "stopId": "34008",
+            "agencyId": "RTD",
+            "dropoffOnly": false,
+            "upcomingTrips": [
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730784060000,
+                    "scheduledDepartureTime": 1730784060000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075575",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730785860000,
+                    "scheduledDepartureTime": 1730785860000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075574",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730787660000,
+                    "scheduledDepartureTime": 1730787660000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075573",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730809410000,
+                    "scheduledDepartureTime": 1730809410000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075608",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730811060000,
+                    "scheduledDepartureTime": 1730811060000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075607",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                },
+                {
+                    "predictedArrivalTime": null,
+                    "predictedDepartureTime": null,
+                    "scheduledArrivalTime": 1730812860000,
+                    "scheduledDepartureTime": 1730812860000,
+                    "stopDropOffType": 0,
+                    "stopPickupType": 0,
+                    "tripId": "115075587",
+                    "tripStatus": "SCHEDULED",
+                    "tripStopStatus": "SCHEDULED"
+                }
+            ]
+        }
+    ],
+    "directions": [
+        "Northbound"
+    ]
+}

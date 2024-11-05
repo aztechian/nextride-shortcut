@@ -8,6 +8,7 @@ import (
 const (
 	SCHEDULED = "SCHEDULED"
 	SHUTTLE   = "BUS SHUTTLE"
+	CANCELLED = "CANCELLED"
 	MS_TO_SEC = 1000
 )
 
@@ -65,7 +66,7 @@ type Vehicle struct {
 }
 
 func (t *Trip) IsValid() bool {
-	return (t.Vehicle != nil && t.Vehicle.ID != "") || t.PredictedArrivalTime != nil
+	return t.IsScheduled() || t.IsPredicted() || t.HasVehicle()
 }
 
 func (t *Trip) IsScheduled() bool {
@@ -74,6 +75,18 @@ func (t *Trip) IsScheduled() bool {
 
 func (t *Trip) IsShuttleBus() bool {
 	return t.TripStopStatus == SHUTTLE
+}
+
+func (t *Trip) IsCancelled() bool {
+	return t.TripStatus == CANCELLED
+}
+
+func (t *Trip) IsPredicted() bool {
+	return t.PredictedArrivalTime != nil
+}
+
+func (t *Trip) HasVehicle() bool {
+	return t.Vehicle != nil && t.Vehicle.ID != ""
 }
 
 func (t *Trip) GetTime() string {

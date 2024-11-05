@@ -18,7 +18,7 @@ type Rtd struct {
 const (
 	URL_TEMPLATE = "https://nodejs-prod.rtd-denver.com/api/v2/nextride/stops/%d"
 	API_KEY      = "e7b926a1-cddb-46e7-bb27-6d134e5b5feb"
-	BROWSER      = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15"
+	BROWSER      = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15"
 )
 
 // NewRtd creates a new Rtd struct with a sensible default http.Client (10 second timeout)

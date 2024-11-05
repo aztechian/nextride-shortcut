@@ -16,14 +16,17 @@ spec:
   {{- if .Values.ingress.className }}
   ingressClassName: {{ .Values.ingress.className }}
   {{- end }}
-  {{- if .Values.ingress.tls }}
+  {{- if or .Values.ingress.tls.enabled .Values.ingress.tls.extraTls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    - hosts:
+        - {{ .Values.ingress.hostname }}
+      secretName: {{ .Values.ingress.hostname | quote }}
+    {{- range .Values.ingress.tls.extraTls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ default . .secretName }}
     {{- end }}
   {{- end }}
   rules:

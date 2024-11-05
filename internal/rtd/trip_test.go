@@ -20,10 +20,11 @@ func TestTripIsValid(t *testing.T) {
 		want bool
 	}{
 		{"Default object", rtd.Trip{}, false},
-		{"No vehicle ID", rtd.Trip{Vehicle: &rtd.Vehicle{}, PredictedArrivalTime: &arrival}, true},
-		{"No predicted arrival time", rtd.Trip{Vehicle: &rtd.Vehicle{ID: vehicleId}}, true},
+		{"Scheduled with no vehicle", rtd.Trip{Vehicle: &rtd.Vehicle{}, PredictedArrivalTime: &arrival, TripStopStatus: rtd.SCHEDULED}, true},
+		{"Has vehicle, but no predicted arrival", rtd.Trip{Vehicle: &rtd.Vehicle{ID: vehicleId}}, true},
+		{"CANCELLED trip", rtd.Trip{ScheduledArrivalTime: &arrival, TripStatus: rtd.CANCELLED}, false},
 		{"Predicted arrival time, but no vehicle", rtd.Trip{PredictedArrivalTime: &arrival}, true},
-		{"Valid object", rtd.Trip{Vehicle: &rtd.Vehicle{ID: vehicleId}, PredictedArrivalTime: &arrival}, true},
+		{"Valid object", rtd.Trip{Vehicle: &rtd.Vehicle{ID: vehicleId}, PredictedArrivalTime: &arrival, TripStopStatus: rtd.SCHEDULED}, true},
 	}
 
 	for _, tt := range tests {

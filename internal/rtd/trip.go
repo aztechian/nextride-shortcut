@@ -66,7 +66,7 @@ type Vehicle struct {
 }
 
 func (t *Trip) IsValid() bool {
-	return t.IsScheduled() || t.HasVehicle()
+	return t.IsScheduled() || t.IsPredicted() || t.HasVehicle()
 }
 
 func (t *Trip) IsScheduled() bool {
@@ -79,6 +79,10 @@ func (t *Trip) IsShuttleBus() bool {
 
 func (t *Trip) IsCancelled() bool {
 	return t.TripStatus == CANCELLED
+}
+
+func (t *Trip) IsPredicted() bool {
+	return t.PredictedArrivalTime != nil
 }
 
 func (t *Trip) HasVehicle() bool {

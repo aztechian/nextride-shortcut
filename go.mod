@@ -5,7 +5,7 @@ go 1.23.2
 require (
 	github.com/gorilla/handlers v1.5.2
 	github.com/stretchr/testify v1.10.0
-	github.com/unrolled/secure v1.15.0
+	github.com/unrolled/secure v1.17.0
 )
 
 require (
